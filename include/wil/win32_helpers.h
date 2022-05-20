@@ -522,6 +522,7 @@ namespace wil
     // It is very important that this be the first object created in the thread proc
     // as when this runs down the thread exits and no destructors of objects created before
     // it will run.
+
     [[nodiscard]] inline auto get_module_reference_for_thread() noexcept
     {
         HMODULE thisModule{};
