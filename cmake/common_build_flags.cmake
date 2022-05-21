@@ -22,6 +22,8 @@ endmacro()
 
 # Fixup default compiler settings
 
+set(CMAKE_CXX_STANDARD 17)
+
 # Be as strict as reasonably possible, since we want to support consumers using strict warning levels
 replace_cxx_flag("/W[0-4]" "/W4")
 append_cxx_flag("/WX")

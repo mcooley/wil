@@ -2300,12 +2300,14 @@ TEST_CASE("ComTests::VerifyTryCoCreateInstanceMissingInterface", "[com][CoCreate
     auto init = wil::CoInitializeEx_failfast();
 
     // request some implemented, one not (IPropertyBag), partial results enabled
+#ifdef WIL_ENABLE_EXCEPTIONS
     {
         auto [sp, pb] = wil::TryCoCreateInstanceEx<IBackgroundCopyManager, IPropertyBag>
             (__uuidof(BackgroundCopyManager), CLSCTX_LOCAL_SERVER);
         REQUIRE(sp != nullptr);
         REQUIRE(pb == nullptr);
     }
+#endif
     {
         auto [sp, pb] = wil::TryCoCreateInstanceExNoThrow<IBackgroundCopyManager, IPropertyBag>
             (__uuidof(BackgroundCopyManager), CLSCTX_LOCAL_SERVER);
